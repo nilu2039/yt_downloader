@@ -8,6 +8,7 @@ import { Spinner } from "reactstrap";
 import Button from "@material-ui/core/Button";
 import { useGradientBtnStyles } from "@mui-treasury/styles/button/gradient";
 import background from "../assets/background.png";
+require("dotenv").config();
 const HomePage = ({ data }) => {
   const [onId, setOnId] = useState(`Quality`);
   const [loading, setLoading] = useState(false);
@@ -33,7 +34,11 @@ const HomePage = ({ data }) => {
       });
       */
       //await axios.get(`http://localhost:5000/test/download?code=${id}`);
-      window.location.href = `http://localhost:5000/get/download?code=${id}&extension=${extension}`;
+      const url =
+        process.env.NODE_ENV === "development"
+          ? `http://localhost:5000/get/download?code=${id}&extension=${extension}`
+          : `/get/download?code=${id}&extension=${extension}`;
+      window.location.href = url;
       setLoading(false);
     } else alert("Select a valid format");
   };

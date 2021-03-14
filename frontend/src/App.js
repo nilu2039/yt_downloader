@@ -11,6 +11,7 @@ import { useRoundInputBaseStyles } from "@mui-treasury/styles/inputBase/round";
 import Button from "@material-ui/core/Button";
 import { useGradientBtnStyles } from "@mui-treasury/styles/button/gradient";
 import { Spinner } from "reactstrap";
+require("dotenv").config();
 const App = () => {
   const [data, setData] = useState([]);
   const [url, setUrl] = useState("");
@@ -22,7 +23,11 @@ const App = () => {
   const fetchData = async () => {
     if (url !== "") {
       setLoading(true);
-      const { data } = await axios.post("http://localhost:5000/get", {
+      const baseUrl =
+        process.env.NODE_ENV === "development"
+          ? "http://localhost:5000/get"
+          : "/get";
+      const { data } = await axios.post(baseUrl, {
         url: url,
       });
       setData(data);

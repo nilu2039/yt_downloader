@@ -62,7 +62,7 @@ app.get("/get/download", async (req, res) => {
   }
 });
 
-const port = process.env.PORT;
-app.listen(port, () => {
+const port = process.env.PORT || 5000;
+app.listen(5000, () => {
   console.log(`connected at port ${port}`);
 });
