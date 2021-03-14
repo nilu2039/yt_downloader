@@ -1,0 +1,45 @@
+.app {
+  background-color: #faf5f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.app_url_input {
+  margin-top: -1px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.app_input {
+  width: 35vw;
+}
+
+.app_btn {
+  margin-bottom: 15px !important;
+}
+
+@media (max-width: 990px) {
+  .app_input {
+    width: 70vw;
+  }
+}
+
+.logo_text {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+}
+
+.logo_text > h3 {
+  font-size: 22px;
+}
+
+.logo {
+  height: 37px;
+}

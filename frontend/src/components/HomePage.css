@@ -1,0 +1,16 @@
+.home_img {
+  height: 74vh;
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  margin-right: 15px !important;
+}
+
+@media (max-width: 990px) {
+  .home_img {
+    width: 100vw;
+    height: 70vh;
+  }
+}
