@@ -13,7 +13,7 @@ var url;
 app.use(cors());
 app.use(express.json());
 
-app.post("/get", async (req, res) => {
+app.post("/api/get", async (req, res) => {
   try {
     url = req.body.url;
     const x = await ytdl.getInfo(url);
@@ -31,7 +31,7 @@ app.post("/get", async (req, res) => {
   }
 });
 
-app.get("/get/download", async (req, res) => {
+app.get("/api/get/download", async (req, res) => {
   try {
     const code = req.query.code;
     const extension = req.query.extension;

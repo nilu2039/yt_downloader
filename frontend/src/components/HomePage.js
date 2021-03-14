@@ -36,7 +36,7 @@ const HomePage = ({ data }) => {
       //await axios.get(`http://localhost:5000/test/download?code=${id}`);
       const url =
         process.env.NODE_ENV === "development"
-          ? `http://localhost:5000/get/download?code=${id}&extension=${extension}`
+          ? `http://localhost:5000/api/get/download?code=${id}&extension=${extension}`
           : `/get/download?code=${id}&extension=${extension}`;
       window.location.href = url;
       setLoading(false);

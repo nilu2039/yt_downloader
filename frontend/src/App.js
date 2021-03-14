@@ -25,7 +25,7 @@ const App = () => {
       setLoading(true);
       const baseUrl =
         process.env.NODE_ENV === "development"
-          ? "http://localhost:5000/get"
+          ? "http://localhost:5000/api/get"
           : "/get";
       const { data } = await axios.post(baseUrl, {
         url: url,
