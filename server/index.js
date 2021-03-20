@@ -76,31 +76,6 @@ app.get("/api/get/download", async (req, res) => {
   }
 });
 
-app.get("/api/get", async (req, response) => {
-  try {
-    const videoID = ytdl.getURLVideoID(
-      "https://www.youtube.com/watch?v=1PBNAoKd-70&t=220s"
-    );
-    const info = await ytdl.getInfo(videoID);
-    const format = ytdl.chooseFormat(info.formats, { quality: "247" });
-    const video = ytdl("https://www.youtube.com/watch?v=1PBNAoKd-70&t=220s", {
-      format,
-    });
-    video.on("info", (info, format) => {
-      var parsed = urlLib.parse(format.url);
-      parsed.method = "HEAD";
-      https
-        .request(parsed, (res) => {
-          console.log("total length:", res.headers["content-length"]);
-          response.json(res.headers["content-length"]);
-        })
-        .end();
-    });
-  } catch (error) {
-    console.log(error);
-  }
-});
-
 const port = process.env.PORT || 5000;
 app.listen(5000, () => {
   console.log(`connected at port ${port}`);
