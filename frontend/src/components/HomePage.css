@@ -1,7 +1,9 @@
 .home_img {
-  height: 74vh;
+  height: 70vh;
   display: flex;
   justify-content: center;
+  opacity: 0.8;
+  z-index: 1;
 }
 
 .menu {
@@ -10,7 +12,36 @@
 
 @media (max-width: 990px) {
   .home_img {
-    width: 100vw;
-    height: 70vh;
+    width: 220px;
+    height: 200px;
   }
+  .thumbnail {
+    height: 170px !important;
+    z-index: 2;
+    border-radius: 13px;
+  }
+}
+
+.thumbnail {
+  height: 200px;
+  z-index: 2;
+  margin-top: 1px;
+  border-radius: 13px;
+}
+
+.dropdown_scroll {
+  overflow: scroll;
+  height: 50vh;
+}
+
+.menu_quality {
+  display: flex;
+}
+
+.dropdownToggle {
+  border-radius: 8px !important;
+}
+
+.dropdown {
+  cursor: pointer;
 }

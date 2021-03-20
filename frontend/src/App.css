@@ -1,5 +1,7 @@
+body {
+  background-color: #faf5f6 !important;
+}
 .app {
-  background-color: #faf5f6;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,13 +29,48 @@
   .app_input {
     width: 70vw;
   }
+  .logo_text {
+    margin-top: 10px;
+    margin-left: 5px;
+    padding: 0 !important;
+  }
+  .app_url_input {
+    margin-bottom: auto;
+    margin-bottom: 30px;
+  }
+  .download {
+    margin-bottom: auto;
+  }
+  .download > img {
+    margin-top: 50px;
+  }
+  .download > p {
+    margin-top: 23px !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+  }
+  .audio {
+    background-color: red;
+    width: 30vw;
+  }
+
+  .audio_btn {
+    margin-left: 5px !important;
+  }
+}
+
+.download > p {
+  margin-top: 23px;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .logo_text {
-  margin-top: 5px;
+  margin-bottom: auto;
   display: flex;
   align-items: center;
-  margin-right: auto;
+  justify-content: space-between;
+  width: 100vw;
 }
 
 .logo_text > h3 {
@@ -42,4 +79,41 @@
 
 .logo {
   height: 37px;
+}
+
+.download {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.audio {
+  width: 85vw;
+}
+
+.audio_btn {
+  margin-left: 1100px;
+  display: flex;
+  justify-content: flex-end;
+}
+.audio_btn {
+  margin-left: auto !important;
+}
+
+.logo_text_one {
+  margin-bottom: auto;
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  padding: 7px;
+}
+
+.logo_text_one {
+  text-decoration: none;
+  color: black;
+}
+
+.logo_text_h3:hover {
+  text-decoration: none;
 }

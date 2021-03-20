@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import "./HomePage.css";
-import { Spinner } from "reactstrap";
+import { useMinimalSelectStyles } from "@mui-treasury/styles/select/minimal";
+import {
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  Spinner,
+  UncontrolledDropdown,
+} from "reactstrap";
 import Button from "@material-ui/core/Button";
 import { useGradientBtnStyles } from "@mui-treasury/styles/button/gradient";
 import { auth, provider } from "../firebase";
 import firebase from "firebase";
 import { useStateValue } from "../contextApi/userContext";
 import { actionTypes } from "../contextApi/reducer";
+import audioselecct from "../utils/audio_format";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-} from "reactstrap";
-import { Link } from "react-router-dom";
 require("dotenv").config();
-const HomePage = ({ data, disabled }) => {
-  console.log(data);
+const AudioOnly = ({ data, disabled }) => {
   const [{}, dispatch] = useStateValue();
   const [selectedOption, setSelectedOption] = useState(`Select quality`);
   const [loading, setLoading] = useState(false);
@@ -31,22 +31,15 @@ const HomePage = ({ data, disabled }) => {
     setSelectedOption(quality);
     console.log(id);
   };
-
   const signOut = () => {
     firebase
       .auth()
       .signOut()
       .then(() => {
-        dispatch(
-          {
-            type: actionTypes.SIGN_OUT,
-            signOut: true,
-          },
-          {
-            type: actionTypes.SET_USER,
-            user: null,
-          }
-        );
+        dispatch({
+          type: actionTypes.SET_USER,
+          user: null,
+        });
       });
   };
   const download = async () => {
@@ -76,6 +69,8 @@ const HomePage = ({ data, disabled }) => {
       });
   };
 
+  // moves the menu below the select input
+
   return (
     <div>
       <div className="menu_quality">
@@ -89,7 +84,7 @@ const HomePage = ({ data, disabled }) => {
               type="button"
               disabled
             >
-              Select video quality
+              Select audio quality
             </DropdownToggle>
           ) : (
             <div>
@@ -102,6 +97,7 @@ const HomePage = ({ data, disabled }) => {
               >
                 {selectedOption}
               </DropdownToggle>
+
               <DropdownMenu
                 aria-labelledby="navbarDropdownMenuLink2"
                 className="dropdown_scroll"
@@ -113,15 +109,11 @@ const HomePage = ({ data, disabled }) => {
                         setid(
                           val.code,
                           val.extension,
-                          `${val.format ? val.format : `No video`} ${
-                            val.extension
-                          } ${val.audio ? val.audio : `No audio`} `
+                          `${val.extension} ${audioselecct(val.audio)}`
                         )
                       }
                     >
-                      {`${val.format ? val.format : `No video`} ${
-                        val.extension
-                      } ${val.audio ? val.audio : `No audio`} `}
+                      {`${val.extension} ${audioselecct(val.audio)}`}
                     </DropdownItem>
                   </li>
                 ))}
@@ -138,4 +130,4 @@ const HomePage = ({ data, disabled }) => {
   );
 };
 
-export default HomePage;
+export default AudioOnly;
