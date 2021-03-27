@@ -6,6 +6,8 @@ const pool = require("./db");
 const ytdl = require("ytdl-core");
 const urlLib = require("url");
 const https = require("https");
+const { response } = require("express");
+const { rejects } = require("assert");
 
 var bar;
 var url;
@@ -14,11 +16,13 @@ app.use(express.json());
 
 app.post("/api/get", async (req, res) => {
   try {
+    await pool.query("BEGIN");
+    pool.query("SET TRANSACTION ISOLATION LEVEL SERIALIZABLE");
+    await pool.query("DELETE FROM format");
     url = req.body.url;
     const x = await ytdl.getInfo(url);
     const videoID = ytdl.getURLVideoID(url);
     const info = await ytdl.getInfo(videoID);
-
     x.formats.map(async (val) => {
       try {
         await pool.query(
@@ -28,7 +32,7 @@ app.post("/api/get", async (req, res) => {
             val.height,
             val.audioQuality,
             val.itag,
-            info.videoDetails.thumbnails[4].url,
+            info.videoDetails.thumbnails[4]?.url,
             info.videoDetails.title,
           ]
         );
@@ -38,8 +42,10 @@ app.post("/api/get", async (req, res) => {
     });
 
     const data = await pool.query("SELECT * FROM format");
+
+    //await pool.query("DELETE FROM format");
+    await pool.query("COMMIT");
     res.json(data.rows);
-    await pool.query("DELETE FROM format");
   } catch (error) {
     console.log(error);
   }

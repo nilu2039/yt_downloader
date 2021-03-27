@@ -80,11 +80,7 @@ const App = () => {
                   </div>
                 </Link>
                 <Link to="/audio">
-                  <ReactBtn
-                    color="warning"
-                    type="button"
-                    style={{ marginRight: "20px" }}
-                  >
+                  <ReactBtn color="warning" type="button" className="reactBtn">
                     Download audio only
                   </ReactBtn>
                 </Link>
@@ -112,7 +108,9 @@ const App = () => {
               </div>
               <div className="download">
                 <HomePage data={data} disabled={disabled} />
-                {data[0]?.title && <p>{data[0]?.title}</p>}
+                {data[0]?.title && (
+                  <p style={{ textAlign: "center" }}>{data[0]?.title}</p>
+                )}
                 {data[0]?.thumbnail && (
                   <img src={data[0]?.thumbnail} alt="" className="thumbnail" />
                 )}
@@ -128,7 +126,7 @@ const App = () => {
                 <Link to="/" className="logo_text_h3">
                   <div className="logo_text_one">
                     <img src={background} alt="" className="logo" />
-                    <h3>Youtube NLD</h3>
+                    <h3 className="logo_text_h3">Youtube NLD</h3>
                   </div>
                 </Link>
               </div>
@@ -155,7 +153,9 @@ const App = () => {
               </div>
               <div className="download">
                 <AudioOnly data={data} disabled={disabled} />
-                {data[0]?.title && <p>{data[0]?.title}</p>}
+                {data[0]?.title && (
+                  <p style={{ textAlign: "center" }}>{data[0]?.title}</p>
+                )}
                 {data[0]?.thumbnail && (
                   <img src={data[0]?.thumbnail} alt="" className="thumbnail" />
                 )}

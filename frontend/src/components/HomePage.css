@@ -19,6 +19,14 @@
     height: 170px !important;
     z-index: 2;
     border-radius: 13px;
+    margin-top: -1px !important;
+  }
+  .menu_quality {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100px;
+    justify-content: space-between;
   }
 }
 

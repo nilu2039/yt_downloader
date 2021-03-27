@@ -57,6 +57,16 @@ body {
   .audio_btn {
     margin-left: 5px !important;
   }
+  .logo_text_h3 {
+    font-size: 17px;
+  }
+  .app_input {
+    margin-top: 35px;
+  }
+  .reactBtn {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+  }
 }
 
 .download > p {
@@ -116,4 +126,8 @@ body {
 
 .logo_text_h3:hover {
   text-decoration: none;
+}
+
+.reactBtn {
+  margin-right: 20px;
 }

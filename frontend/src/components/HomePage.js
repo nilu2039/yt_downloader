@@ -18,7 +18,6 @@ import {
 import { Link } from "react-router-dom";
 require("dotenv").config();
 const HomePage = ({ data, disabled }) => {
-  console.log(data);
   const [{}, dispatch] = useStateValue();
   const [selectedOption, setSelectedOption] = useState(`Select quality`);
   const [loading, setLoading] = useState(false);
