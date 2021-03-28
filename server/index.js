@@ -17,7 +17,6 @@ app.use(express.json());
 app.post("/api/get", async (req, res) => {
   try {
     await pool.query("BEGIN");
-    pool.query("SET TRANSACTION ISOLATION LEVEL SERIALIZABLE");
     await pool.query("DELETE FROM format");
     url = req.body.url;
     const x = await ytdl.getInfo(url);
