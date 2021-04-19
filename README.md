@@ -9,6 +9,6 @@ Then run
 
 ### `npm start`
 
-### `add necessary environment variables`
+Then add necessary environment variables
 
 ![Screenshot (16)](https://user-images.githubusercontent.com/37154390/115262521-41e74d80-a152-11eb-8233-fd13dec48565.png)
